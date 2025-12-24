@@ -8,12 +8,12 @@
   <!-- PicoCSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 
-  <!-- 引入浪漫字体：Tangerine（英文）+ 霞鹜文楷（中文） -->
+  <!-- 引入浪漫字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/lxgw/LxgwWenKai@latest/style.css" rel="stylesheet">
 
   <style>
-    /* 🌸 背景设置 */
+    /* 🌸 背景样式 */
     body {
       margin: 0;
       background: url("Christmas tree.png") no-repeat center center fixed;
@@ -21,10 +21,10 @@
       color: #5a4a4a;
       font-family: 'LXGW WenKai', 'Playfair Display', serif;
       position: relative;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
-    /* 💫 添加柔光遮罩，让背景更高级柔和 */
+    /* 柔光遮罩层 */
     body::before {
       content: "";
       position: fixed;
@@ -42,16 +42,7 @@
       z-index: 1;
     }
 
-    main {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 4rem;
-      flex-wrap: wrap;
-      padding: 4rem 2rem;
-    }
-
-    /* 🌸 标题使用中英混合浪漫字体 */
+    /* 🌸 标题 */
     h1 {
       width: 100%;
       text-align: center;
@@ -59,12 +50,21 @@
       font-size: 3.2rem;
       color: #e697ab;
       letter-spacing: 0.03em;
-      margin-bottom: 2rem;
-      text-shadow: none;
+      margin: 2rem 1rem;
       font-weight: 700;
     }
 
-    /* ✍️ 打字机样式 */
+    /* 🌷 主体布局 */
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding: 2rem;
+    }
+
+    /* ✍️ 打字机文字 */
     .typewriter {
       width: 320px;
       font-size: 1.1rem;
@@ -76,6 +76,7 @@
       text-align: left;
     }
 
+    /* 🎬 视频 */
     video {
       width: 70%;
       max-width: 500px;
@@ -92,7 +93,7 @@
       font-family: 'LXGW WenKai', serif;
     }
 
-    /* 💗 柔和爱心漂浮 */
+    /* 💗 爱心漂浮 */
     .heart {
       position: fixed;
       bottom: -20px;
@@ -119,6 +120,35 @@
     @keyframes floatUp {
       0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 0.6; }
       100% { transform: translateY(-100vh) rotate(45deg) scale(1.2); opacity: 0; }
+    }
+
+    /* 📱 手机端适配 */
+    @media (max-width: 768px) {
+      body {
+        background-attachment: scroll; /* 避免手机上背景错位 */
+        background-position: center;
+      }
+      h1 {
+        font-size: 2.4rem;
+        margin-bottom: 1.5rem;
+      }
+      main {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+      .typewriter {
+        width: 90%;
+        font-size: 1rem;
+        text-align: center;
+      }
+      video {
+        width: 90%;
+        max-width: 100%;
+      }
+      footer {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
