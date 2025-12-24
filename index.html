@@ -1,90 +1,146 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>致 ZHY 的圣诞浪漫树</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>九哥哥希望小宝塔塔永远健康快乐</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     body {
-      background: radial-gradient(#2c2c54, #1e1e2f);
+      margin: 0;
+      background: radial-gradient(circle at top, #fbe8f9, #d9b3f2);
       color: #fff;
+      font-family: 'Great Vibes', cursive;
+      overflow: hidden;
+    }
+
+    main {
       text-align: center;
+      padding: 2rem 1rem;
+      animation: fadeIn 3s ease-in-out;
     }
-    .heart {
-      animation: pulse 1.6s infinite;
-      color: #ff7b9c;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px rgba(255, 200, 230, 0.9);
+      animation: glow 3s ease-in-out infinite alternate;
     }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-    .glow {
-      text-shadow: 0 0 12px #ffd1dc;
-    }
+
     img {
-      max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 0 22px rgba(255,255,255,0.2);
+      width: 80%;
+      max-width: 400px;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(255, 180, 220, 0.6);
+      animation: softGlow 4s ease-in-out infinite alternate;
     }
-    button {
-      background: #ff4d6d;
-      border: none;
-      color: white;
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 1.2rem;
+      color: #ffd9f7;
+      text-shadow: 0 0 8px #fff0fa;
+    }
+
+    /* 爱心动画 */
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: rgba(255,105,180,0.6);
+      transform: rotate(45deg);
+      animation: float 6s ease-in infinite;
+      clip-path: polygon(50% 0%, 100% 38%, 80% 100%, 20% 100%, 0% 38%);
+    }
+
+    /* 雪花 */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: #fff;
+      opacity: 0.9;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ffbde4; }
+      to { text-shadow: 0 0 25px #ffe6fa; }
+    }
+
+    @keyframes softGlow {
+      from { transform: scale(1); box-shadow: 0 0 20px rgba(255,180,220,0.5); }
+      to { transform: scale(1.03); box-shadow: 0 0 35px rgba(255,220,240,0.9); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 1; }
+      100% { transform: translateY(-800px) rotate(45deg) scale(1.5); opacity: 0; }
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(100vh); }
     }
   </style>
 </head>
 <body>
 
-<nav class="container-fluid">
-  <ul><li><strong>给ZHY的圣诞告白</strong></li></ul>
-  <ul>
-    <li><a href="#">主页</a></li>
-    <li><a href="#">关于我们</a></li>
-    <li><a href="#" role="button">节日快乐</a></li>
-  </ul>
-</nav>
+  <audio id="bgm" autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/12/06/audio_6a3b78b7c2.mp3?filename=silent-night-piano-soft-129349.mp3" type="audio/mpeg">
+  </audio>
 
-<main class="container">
-  <div class="grid">
-    <section>
-      <hgroup>
-        <h2 class="heart">❤️ ZHY，我爱你 ❤️</h2>
-        <h3 class="glow">Merry Christmas & 永远在一起</h3>
-      </hgroup>
-      <p>这个圣诞，我为你种下一棵只属于你的浪漫圣诞树。</p>
-      <figure>
-        <img src="https://sdmntprjapaneast.oaiusercontent.com/files/00000000-f1d0-7209-b51a-9d025f56fc33/raw" alt="浪漫圣诞树">
-        <figcaption><a href="#" target="_blank">点击图片，许下圣诞愿望🎁</a></figcaption>
-      </figure>
-      <h3>致：最爱的ZHY</h3>
-      <p>在这个被雪和光点缀的节日里，我只想对你说——我好爱你。愿你眼中常有光芒，心里始终有我。</p>
-      <h3>From: 你最爱的ta ❤️</h3>
-      <p>我们一起度过的每个节日，都是我此生最珍贵的礼物。</p>
-    </section>
-  </div>
-</main>
+  <script>
+    // 音乐淡入效果
+    const bgm = document.getElementById('bgm');
+    bgm.volume = 0;
+    let vol = 0;
+    const fadeIn = setInterval(() => {
+      if (vol < 0.5) {
+        vol += 0.02;
+        bgm.volume = vol;
+      } else {
+        clearInterval(fadeIn);
+      }
+    }, 200);
 
-<section aria-label="Subscribe example">
-  <div class="container">
-    <article>
-      <hgroup>
-        <h2>给ZHY的圣诞惊喜留言</h2>
-        <h3>写下你的愿望（我会偷偷看到哦）</h3>
-      </hgroup>
-      <form class="grid">
-        <input type="text" id="firstname" name="firstname" placeholder="你的昵称" aria-label="昵称" required />
-        <input type="email" id="email" name="email" placeholder="你的心愿" aria-label="心愿" required />
-        <button type="submit" onclick="event.preventDefault(); alert('愿望已偷偷放进星星里啦 🎄✨')">发送心愿</button>
-      </form>
-    </article>
-  </div>
-</section>
+    // 生成雪花
+    for (let i = 0; i < 30; i++) {
+      const snow = document.createElement('div');
+      snow.className = 'snowflake';
+      snow.textContent = '❄';
+      snow.style.left = Math.random() * 100 + 'vw';
+      snow.style.animationDuration = 5 + Math.random() * 5 + 's';
+      snow.style.fontSize = 12 + Math.random() * 20 + 'px';
+      document.body.appendChild(snow);
+    }
 
-<footer class="container">
-  <small><a href="#">ZHY 专属圣诞树</a> • <a href="#">爱你每一天</a></small>
-</footer>
+    // 生成漂浮爱心
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.bottom = '0px';
+      heart.style.animationDuration = 4 + Math.random() * 4 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }, 800);
+  </script>
+
+  <main>
+    <h1>九哥哥希望小宝塔塔永远健康快乐</h1>
+    <img src="https://sdmntprjapaneast.oaiusercontent.com/files/00000000-f1d0-7209-b51a-9d025f56fc33/raw" alt="梦幻圣诞树">
+  </main>
+
+  <footer>
+    Made with ❤️ by 九哥哥 for 小宝塔塔
+  </footer>
 
 </body>
 </html>
