@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>九哥哥希望小宝塔塔永远健康快乐</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       background: linear-gradient(180deg, #f8e6ff, #e6c4f7);
       color: #fff;
-      font-family: 'Great Vibes', cursive;
+      font-family: 'Parisienne', cursive;
       overflow: hidden;
     }
 
@@ -21,19 +21,19 @@
       animation: fadeIn 3s ease-in-out;
     }
 
-    /* 金色闪光标题 */
+    /* 粉金渐变发光标题 */
     h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
       margin-bottom: 1rem;
-      background: linear-gradient(90deg, #ffefba, #ffd700, #fff5cc, #ffefba);
+      background: linear-gradient(90deg, #ffaad9, #ffd6a5, #ffe5ec, #ffaad9);
       background-size: 300% 300%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: goldShine 5s linear infinite;
-      text-shadow: 0 0 15px #ffd700, 0 0 25px #fff2b3;
+      animation: pinkGold 6s linear infinite;
+      text-shadow: 0 0 15px #ffb6c1, 0 0 30px rgba(255, 182, 193, 0.6);
     }
 
-    @keyframes goldShine {
+    @keyframes pinkGold {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
@@ -90,9 +90,66 @@
       0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 0.9; }
       100% { transform: translateY(-100vh) rotate(45deg) scale(1.4); opacity: 0; }
     }
+
+    /* 两侧滚动祝福语 + 光带效果 */
+    .side-text {
+      position: fixed;
+      top: 0;
+      width: 140px;
+      height: 100%;
+      overflow: hidden;
+      font-size: 1.4rem;
+      font-family: 'Parisienne', cursive;
+      color: transparent;
+      background: linear-gradient(180deg, #ffaad9, #ffd6a5, #fff5f7);
+      -webkit-background-clip: text;
+      text-shadow: 0 0 10px rgba(255,192,203,0.9);
+      z-index: 5;
+      filter: drop-shadow(0 0 15px rgba(255,182,193,0.8));
+    }
+
+    #leftText {
+      left: 0;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      border-right: 2px solid rgba(255,182,193,0.4);
+      box-shadow: inset -5px 0 15px rgba(255,182,193,0.5);
+    }
+
+    #rightText {
+      right: 0;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      border-left: 2px solid rgba(255,182,193,0.4);
+      box-shadow: inset 5px 0 15px rgba(255,182,193,0.5);
+    }
+
+    .side-text span {
+      display: block;
+      margin: 2rem 0;
+      animation: scrollText 25s linear infinite;
+    }
+
+    @keyframes scrollText {
+      0% { transform: translateY(100%); }
+      100% { transform: translateY(-100%); }
+    }
   </style>
 </head>
 <body>
+
+  <!-- 左右两侧祝福语 -->
+  <div class="side-text" id="leftText">
+    <span>愿小宝塔塔永远快乐💖</span>
+    <span>健康、幸福、平安✨</span>
+    <span>我会永远爱你🎄</span>
+  </div>
+
+  <div class="side-text" id="rightText">
+    <span>小宝塔塔最可爱💕</span>
+    <span>世界因你而温柔🌸</span>
+    <span>圣诞快乐，永远相爱💞</span>
+  </div>
 
   <!-- 背景音乐 -->
   <audio id="bgm" autoplay loop>
@@ -129,7 +186,7 @@
   <main>
     <h1>九哥哥希望小宝塔塔永远健康快乐</h1>
 
-    <!-- 视频区 -->
+    <!-- 视频 -->
     <video autoplay muted loop playsinline>
       <source src="love.mp4" type="video/mp4">
       你的浏览器不支持播放视频。
