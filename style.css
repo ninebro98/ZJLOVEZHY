@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/lxgw/LxgwWenKai@latest/style.css");
+
+/* 全局 */
+body {
+  margin: 0;
+  font-family: 'LXGW WenKai', 'Playfair Display', serif;
+  background: url("Christmas tree.png") center/cover no-repeat fixed;
+  overflow-x: hidden;
+  color: #5a4a4a;
+}
+
+/* 淡粉柔光遮罩 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 245, 248, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 0;
+}
+
+/* 封面页 */
+.cover {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 230, 238, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 5;
+  transition: opacity 1.5s ease;
+}
+.cover.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.cover-content {
+  text-align: center;
+  animation: float 3s ease-in-out infinite;
+}
+.cover-content h1 {
+  font-family: 'Tangerine', 'LXGW WenKai', cursive;
+  font-size: 3.4rem;
+  color: #e697ab;
+  text-shadow: 0 0 10px rgba(255,182,193,0.5);
+}
+#enterBtn {
+  margin-top: 2rem;
+  background: rgba(255,182,193,0.4);
+  border: 1px solid rgba(255,182,193,0.8);
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  padding: 0.8rem 2rem;
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#enterBtn:hover {
+  background: rgba(255,182,193,0.7);
+  transform: scale(1.05);
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* 主内容 */
+main {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 3rem 1rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+main.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.main-title {
+  font-family: 'Tangerine', 'LXGW WenKai', cursive;
+  font-size: 3rem;
+  color: #e697ab;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+/* 视频 */
+.video-wrapper {
+  position: relative;
+  width: 70%;
+  max-width: 500px;
+  margin: 2rem auto;
+  border-radius: 18px;
+  overflow: hidden;
+  filter: brightness(1.05) saturate(1.15);
+}
+.video-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,192,203,0.25), rgba(255,228,225,0.3));
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+video {
+  width: 100%;
+  border-radius: 18px;
+}
+
+/* 打字机 */
+.typewriter {
+  font-size: 1.1rem;
+  color: #7a5f65;
+  line-height: 1.8;
+  max-width: 320px;
+  margin: 0 auto 2rem;
+  text-align: left;
+}
+
+/* 爱心 */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  width: 14px;
+  height: 14px;
+  background: rgba(255,182,193,0.3);
+  transform: rotate(45deg);
+  animation: floatUp 10s ease-in infinite;
+  opacity: 0.6;
+  z-index: 2;
+}
+.heart::before, .heart::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: inherit;
+  border-radius: 50%;
+}
+.heart::before { top: -7px; left: 0; }
+.heart::after { left: -7px; top: 0; }
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(45deg); opacity: 0.6; }
+  100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+}
+
+/* 页脚 */
+footer {
+  color: #9c7b83;
+  margin-top: 2rem;
+  font-style: italic;
+}
+
+/* 响应式 */
+@media (max-width:768px){
+  .main-title { font-size: 2.4rem; }
+  .video-wrapper { width: 90%; }
+  .typewriter { font-size: 1rem; text-align:center; }
+}
