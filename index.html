@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>致 ZHY 的圣诞浪漫树</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+  <style>
+    body {
+      background: radial-gradient(#2c2c54, #1e1e2f);
+      color: #fff;
+      text-align: center;
+    }
+    .heart {
+      animation: pulse 1.6s infinite;
+      color: #ff7b9c;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .glow {
+      text-shadow: 0 0 12px #ffd1dc;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 22px rgba(255,255,255,0.2);
+    }
+    button {
+      background: #ff4d6d;
+      border: none;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="container-fluid">
+  <ul><li><strong>给ZHY的圣诞告白</strong></li></ul>
+  <ul>
+    <li><a href="#">主页</a></li>
+    <li><a href="#">关于我们</a></li>
+    <li><a href="#" role="button">节日快乐</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+  <div class="grid">
+    <section>
+      <hgroup>
+        <h2 class="heart">❤️ ZHY，我爱你 ❤️</h2>
+        <h3 class="glow">Merry Christmas & 永远在一起</h3>
+      </hgroup>
+      <p>这个圣诞，我为你种下一棵只属于你的浪漫圣诞树。</p>
+      <figure>
+        <img src="https://sdmntprjapaneast.oaiusercontent.com/files/00000000-f1d0-7209-b51a-9d025f56fc33/raw" alt="浪漫圣诞树">
+        <figcaption><a href="#" target="_blank">点击图片，许下圣诞愿望🎁</a></figcaption>
+      </figure>
+      <h3>致：最爱的ZHY</h3>
+      <p>在这个被雪和光点缀的节日里，我只想对你说——我好爱你。愿你眼中常有光芒，心里始终有我。</p>
+      <h3>From: 你最爱的ta ❤️</h3>
+      <p>我们一起度过的每个节日，都是我此生最珍贵的礼物。</p>
+    </section>
+  </div>
+</main>
+
+<section aria-label="Subscribe example">
+  <div class="container">
+    <article>
+      <hgroup>
+        <h2>给ZHY的圣诞惊喜留言</h2>
+        <h3>写下你的愿望（我会偷偷看到哦）</h3>
+      </hgroup>
+      <form class="grid">
+        <input type="text" id="firstname" name="firstname" placeholder="你的昵称" aria-label="昵称" required />
+        <input type="email" id="email" name="email" placeholder="你的心愿" aria-label="心愿" required />
+        <button type="submit" onclick="event.preventDefault(); alert('愿望已偷偷放进星星里啦 🎄✨')">发送心愿</button>
+      </form>
+    </article>
+  </div>
+</section>
+
+<footer class="container">
+  <small><a href="#">ZHY 专属圣诞树</a> • <a href="#">爱你每一天</a></small>
+</footer>
+
+</body>
+</html>
