@@ -9,7 +9,7 @@
   <style>
     body {
       margin: 0;
-      background: radial-gradient(circle at top, #fbe8f9, #d9b3f2);
+      background: linear-gradient(180deg, #f8e6ff, #e6c4f7);
       color: #fff;
       font-family: 'Great Vibes', cursive;
       overflow: hidden;
@@ -22,9 +22,9 @@
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.6rem;
       margin-bottom: 1rem;
-      text-shadow: 0 0 15px rgba(255, 200, 230, 0.9);
+      text-shadow: 0 0 20px rgba(255, 190, 240, 0.9);
       animation: glow 3s ease-in-out infinite alternate;
     }
 
@@ -32,36 +32,28 @@
       width: 80%;
       max-width: 400px;
       border-radius: 16px;
-      box-shadow: 0 0 25px rgba(255, 180, 220, 0.6);
+      box-shadow: 0 0 30px rgba(255, 160, 220, 0.7);
       animation: softGlow 4s ease-in-out infinite alternate;
     }
 
     footer {
       text-align: center;
       padding: 2rem 0;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #ffd9f7;
       text-shadow: 0 0 8px #fff0fa;
     }
 
-    /* 爱心动画 */
+    /* 爱心漂浮 */
     .heart {
       position: fixed;
-      width: 20px;
-      height: 20px;
-      background: rgba(255,105,180,0.6);
+      bottom: -10px;
+      width: 18px;
+      height: 18px;
       transform: rotate(45deg);
-      animation: float 6s ease-in infinite;
-      clip-path: polygon(50% 0%, 100% 38%, 80% 100%, 20% 100%, 0% 38%);
-    }
-
-    /* 雪花 */
-    .snowflake {
-      position: fixed;
-      top: -10px;
-      color: #fff;
-      opacity: 0.9;
-      animation: fall linear infinite;
+      animation: floatUp 8s ease-in infinite;
+      opacity: 0.8;
+      z-index: 10;
     }
 
     @keyframes fadeIn {
@@ -75,67 +67,53 @@
     }
 
     @keyframes softGlow {
-      from { transform: scale(1); box-shadow: 0 0 20px rgba(255,180,220,0.5); }
-      to { transform: scale(1.03); box-shadow: 0 0 35px rgba(255,220,240,0.9); }
+      from { transform: scale(1); box-shadow: 0 0 25px rgba(255,180,220,0.6); }
+      to { transform: scale(1.04); box-shadow: 0 0 40px rgba(255,220,240,1); }
     }
 
-    @keyframes float {
-      0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 1; }
-      100% { transform: translateY(-800px) rotate(45deg) scale(1.5); opacity: 0; }
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(100vh); }
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 0.9; }
+      100% { transform: translateY(-100vh) rotate(45deg) scale(1.4); opacity: 0; }
     }
   </style>
 </head>
 <body>
 
+  <!-- 背景音乐 -->
   <audio id="bgm" autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/12/06/audio_6a3b78b7c2.mp3?filename=silent-night-piano-soft-129349.mp3" type="audio/mpeg">
+    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Scott_Holmes_Music/Christmas_Music/Scott_Holmes_Music_-_Christmas_Morning.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // 音乐淡入效果
+    // 音乐淡入
     const bgm = document.getElementById('bgm');
     bgm.volume = 0;
     let vol = 0;
-    const fadeIn = setInterval(() => {
+    const fade = setInterval(() => {
       if (vol < 0.5) {
         vol += 0.02;
         bgm.volume = vol;
       } else {
-        clearInterval(fadeIn);
+        clearInterval(fade);
       }
     }, 200);
 
-    // 生成雪花
-    for (let i = 0; i < 30; i++) {
-      const snow = document.createElement('div');
-      snow.className = 'snowflake';
-      snow.textContent = '❄';
-      snow.style.left = Math.random() * 100 + 'vw';
-      snow.style.animationDuration = 5 + Math.random() * 5 + 's';
-      snow.style.fontSize = 12 + Math.random() * 20 + 'px';
-      document.body.appendChild(snow);
-    }
-
-    // 生成漂浮爱心
+    // 爱心生成动画
+    const colors = ['#ff9bd2', '#ffd1dc', '#ffffff'];
     setInterval(() => {
       const heart = document.createElement('div');
       heart.className = 'heart';
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.bottom = '0px';
-      heart.style.animationDuration = 4 + Math.random() * 4 + 's';
+      heart.style.background = colors[Math.floor(Math.random() * colors.length)];
+      heart.style.animationDuration = (6 + Math.random() * 4) + 's';
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 8000);
-    }, 800);
+      setTimeout(() => heart.remove(), 9000);
+    }, 400);
   </script>
 
   <main>
     <h1>九哥哥希望小宝塔塔永远健康快乐</h1>
-    <img src="https://sdmntprjapaneast.oaiusercontent.com/files/00000000-f1d0-7209-b51a-9d025f56fc33/raw" alt="梦幻圣诞树">
+    <img src="https://cdn.pixabay.com/photo/2021/12/18/20/38/christmas-tree-6878822_1280.jpg" alt="梦幻粉色圣诞树">
   </main>
 
   <footer>
