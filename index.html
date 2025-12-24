@@ -21,11 +21,22 @@
       animation: fadeIn 3s ease-in-out;
     }
 
+    /* 金色闪光标题 */
     h1 {
-      font-size: 2.6rem;
+      font-size: 2.8rem;
       margin-bottom: 1rem;
-      text-shadow: 0 0 20px rgba(255, 190, 240, 0.9);
-      animation: glow 3s ease-in-out infinite alternate;
+      background: linear-gradient(90deg, #ffefba, #ffd700, #fff5cc, #ffefba);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: goldShine 5s linear infinite;
+      text-shadow: 0 0 15px #ffd700, 0 0 25px #fff2b3;
+    }
+
+    @keyframes goldShine {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     video {
@@ -68,11 +79,6 @@
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #ffbde4; }
-      to { text-shadow: 0 0 25px #ffe6fa; }
     }
 
     @keyframes softGlow {
